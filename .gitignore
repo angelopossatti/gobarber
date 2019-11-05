@@ -1,3 +1,7 @@
 node_modules
 .vscode/
 nodemon.json
+.editorconfig
+.eslintrc.js
+.sequelizerc
+.prettierrc
