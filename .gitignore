@@ -5,3 +5,4 @@ nodemon.json
 .eslintrc.js
 .sequelizerc
 .prettierrc
+tmp/
