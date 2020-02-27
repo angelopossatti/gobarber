@@ -58,8 +58,14 @@ class AppointmentController {
 
     if (!isProvider) {
       return res
-        .status(401)
+        .status(400)
         .json({ error: 'Fornecedor escolhido não é válido.' });
+    }
+
+    if (provider_id === req.userId) {
+      return res.status(400).json({
+        error: 'Por favor, selecione outro profissional para continuar.',
+      });
     }
 
     /**
@@ -102,7 +108,7 @@ class AppointmentController {
      */
 
     const user = await User.findByPk(req.userId);
-    const formattedDate = format(hourStart, "dd de' MMMM', às' H:mm'h' ", {
+    const formattedDate = format(hourStart, "dd 'de' MMMM', às' H:mm'h' ", {
       locale: pt,
     });
 
