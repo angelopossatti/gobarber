@@ -137,6 +137,12 @@ class AppointmentController {
       ],
     });
 
+    if (appointment.canceled_at) {
+      return res
+        .status(400)
+        .json({ error: 'Este agendamento já foi cancelado anteriormente.' });
+    }
+
     if (appointment.user_id !== req.userId) {
       return res
         .status(401)
